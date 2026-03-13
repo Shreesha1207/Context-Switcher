@@ -1,0 +1,96 @@
+/* ─── AI Context Bridge Banner ──────────────────────────────────── */
+
+.acb-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999999;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-bottom: 2px solid #6366f1;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    animation: acb-slideDown 0.3s ease;
+}
+
+@keyframes acb-slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.acb-banner-text {
+    flex: 1;
+    font-size: 13px;
+    color: #e8e8f0;
+}
+
+.acb-banner-text strong {
+    color: #818cf8;
+}
+
+.acb-banner-icon {
+    font-size: 18px;
+}
+
+.acb-banner-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.acb-banner-btn {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.acb-banner-btn-primary {
+    background: #6366f1;
+    color: white;
+}
+
+.acb-banner-btn-primary:hover {
+    background: #818cf8;
+}
+
+.acb-banner-btn-dismiss {
+    background: transparent;
+    color: #9999b3;
+    border: 1px solid #2d2d44;
+}
+
+.acb-banner-btn-dismiss:hover {
+    color: #e8e8f0;
+    border-color: #666680;
+}
+
+.acb-banner-hidden {
+    animation: acb-slideUp 0.3s ease forwards;
+}
+
+@keyframes acb-slideUp {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}

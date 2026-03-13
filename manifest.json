@@ -1,0 +1,114 @@
+{
+  "manifest_version": 3,
+  "name": "AI Context Bridge",
+  "version": "2.0",
+  "description": "Capture full conversations from any AI chatbot and continue them on another AI seamlessly.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs",
+    "storage",
+    "unlimitedStorage",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "https://chat.openai.com/*",
+    "https://chatgpt.com/*",
+    "https://gemini.google.com/*",
+    "https://claude.ai/*",
+    "https://copilot.microsoft.com/*",
+    "https://www.perplexity.ai/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chat.openai.com/*",
+        "https://chatgpt.com/*"
+      ],
+      "js": [
+        "extractors/common.js",
+        "extractors/condenser.js",
+        "extractors/dynamic.js",
+        "extractors/chatgpt.js",
+        "banner.js"
+      ],
+      "css": [
+        "banner.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://gemini.google.com/*"
+      ],
+      "js": [
+        "extractors/common.js",
+        "extractors/condenser.js",
+        "extractors/dynamic.js",
+        "extractors/gemini.js",
+        "banner.js"
+      ],
+      "css": [
+        "banner.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://claude.ai/*"
+      ],
+      "js": [
+        "extractors/common.js",
+        "extractors/condenser.js",
+        "extractors/dynamic.js",
+        "extractors/claude.js",
+        "banner.js"
+      ],
+      "css": [
+        "banner.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://copilot.microsoft.com/*"
+      ],
+      "js": [
+        "extractors/common.js",
+        "extractors/condenser.js",
+        "extractors/dynamic.js",
+        "extractors/copilot.js",
+        "banner.js"
+      ],
+      "css": [
+        "banner.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.perplexity.ai/*"
+      ],
+      "js": [
+        "extractors/common.js",
+        "extractors/condenser.js",
+        "extractors/dynamic.js",
+        "extractors/perplexity.js",
+        "banner.js"
+      ],
+      "css": [
+        "banner.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "AI Context Bridge"
+  },
+  "icons": {}
+}

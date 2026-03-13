@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=400, initial-scale=1.0">
+  <title>AI Context Bridge</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1>
+        <span class="logo">⚡</span>
+        AI Context Bridge
+      </h1>
+      <p class="subtitle">Capture &amp; continue conversations across AI platforms</p>
+    </header>
+
+    <!-- Capture Button -->
+    <button id="captureBtn" class="btn-capture">
+      <span class="btn-icon">📸</span>
+      Capture Current Conversation
+    </button>
+
+    <!-- Status Message -->
+    <div id="statusMsg" class="status-msg hidden"></div>
+
+    <!-- Saved Conversations -->
+    <div class="section-header">
+      <h2>Saved Conversations</h2>
+      <div class="section-header-actions">
+        <span id="convoCount" class="badge">0</span>
+        <button id="clearAllBtn" class="btn-clear-all hidden" title="Clear all conversations">🗑️ Clear All</button>
+      </div>
+    </div>
+
+    <div id="convoList" class="convo-list">
+      <div class="empty-state">
+        <span class="empty-icon">💬</span>
+        <p>No saved conversations yet.</p>
+        <p class="hint">Go to any AI chatbot and click "Capture" to save a conversation.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copy Modal -->
+  <div id="copyModal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <!-- Header -->
+      <div class="modal-header">
+        <h3>🔀 Transfer Context</h3>
+        <button id="modalCancelBtn" class="modal-close" title="Close">&times;</button>
+      </div>
+
+      <!-- Source info -->
+      <div class="modal-source">
+        <span class="modal-source-label">From</span>
+        <span id="modalPlatform" class="platform-badge"></span>
+        <span class="modal-source-sep">·</span>
+        <span id="modalStats" class="stats"></span>
+      </div>
+      <div id="modalTitle" class="modal-convo-title"></div>
+
+      <!-- Step 1: Choose mode -->
+      <div class="modal-step">
+        <div class="step-label"><span class="step-num">1</span> Choose what to copy</div>
+        <div class="mode-selector">
+          <label class="mode-option">
+            <input type="radio" name="copyMode" value="smart" checked>
+            <div class="mode-card">
+              <div class="mode-card-header">
+                <span class="mode-icon">🧠</span>
+                <strong>Smart Summary</strong>
+              </div>
+              <span>Summarizes the full conversation — best for long chats</span>
+            </div>
+          </label>
+          <label class="mode-option">
+            <input type="radio" name="copyMode" value="recent">
+            <div class="mode-card">
+              <div class="mode-card-header">
+                <span class="mode-icon">📝</span>
+                <strong>Recent Only</strong>
+              </div>
+              <span>Copies the last N exchanges verbatim</span>
+            </div>
+          </label>
+        </div>
+
+        <div id="recentCountGroup" class="recent-count hidden">
+          <label>Exchanges:</label>
+          <input type="number" id="recentCount" value="10" min="1" max="100" step="1">
+        </div>
+      </div>
+
+      <!-- Token estimate -->
+      <div id="tokenEstimate" class="token-estimate"></div>
+
+      <!-- Step 2: Copy -->
+      <div class="modal-step">
+        <div class="step-label"><span class="step-num">2</span> Copy & paste into your AI</div>
+        <button id="modalCopyBtn" class="btn-primary btn-copy-main">📋 Copy to Clipboard</button>
+        <p class="paste-hint">Then paste into ChatGPT, Gemini, Claude, Copilot, or any AI chatbot</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>
